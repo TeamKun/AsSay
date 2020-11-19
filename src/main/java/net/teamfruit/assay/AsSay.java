@@ -69,7 +69,7 @@ public final class AsSay extends JavaPlugin {
                 new TextComponent(new ComponentBuilder()
                         .append(new TextComponent(new ComponentBuilder()
                                 .append(name)
-                                .append("...?")
+                                .append(sender.hasPermission("assay.realname." + name) ? "" : "...?")
                                 .create()
                         ))
                         .event(new HoverEvent(

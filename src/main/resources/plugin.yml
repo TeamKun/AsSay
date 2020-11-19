@@ -30,3 +30,8 @@ permissions:
     description: |-
       この権限がない人は発言できない
       assay.as.<name>
+  assay.realname.*:
+    default: false
+    description: |-
+      この権限がある人としてなりすませる
+      assay.realname.<name>
