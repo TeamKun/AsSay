@@ -16,6 +16,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 public final class AsSay extends JavaPlugin {
     private List<String> getFrom(String[] args, int index) {
@@ -85,5 +86,21 @@ public final class AsSay extends JavaPlugin {
         ));
 
         return true;
+    }
+
+    @Override
+    public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {
+        switch (args.length) {
+            case 1:
+                return Bukkit.getOnlinePlayers().stream()
+                        .map(Player::getName)
+                        .filter(e -> !checkPermission(sender, e).isPresent())
+                        .filter(e -> e.startsWith(args[0]))
+                        .collect(Collectors.toList());
+            case 2:
+                return Collections.singletonList("<text>");
+        }
+
+        return Collections.emptyList();
     }
 }
