@@ -84,6 +84,7 @@ public final class AsSay extends JavaPlugin {
                 ),
                 new TextComponent(text)
         ));
+        Bukkit.getPluginManager().callEvent(new AsSayEvent(sender, name, text));
 
         return true;
     }
