@@ -1,0 +1,32 @@
+name: AsSay
+version: ${project.version}
+main: net.teamfruit.assay.AsSay
+api-version: 1.15
+authors: [ Kamesuta ]
+
+commands:
+  as:
+    usage: |-
+      /as <name> text
+    description: Say as <name>
+    permission: assay
+
+permissions:
+  assay:
+    default: true
+  assay.offline:
+    default: op
+    description: オフラインの人として
+  assay.outside:
+    default: op
+    description: 鯖に入ったことのない人として
+  assay.passthrough.*:
+    default: false
+    description: |-
+      ここに追加された人はオフラインや鯖に入ったことがなくても発言できる
+      assay.passthrough.<name>
+  assay.as.*:
+    default: true
+    description: |-
+      この権限がない人は発言できない
+      assay.as.<name>
